@@ -50,6 +50,7 @@ class TemplateEstimator(BaseEstimator):
         """
         X, y = check_X_y(X, y, accept_sparse=True)
         self.is_fitted_ = True
+        self.n_features_in_ = X.shape[1]
         # `fit` should always return `self`
         return self
 
@@ -116,6 +117,8 @@ class TemplateClassifier(ClassifierMixin, BaseEstimator):
 
         self.X_ = X
         self.y_ = y
+
+        self.n_features_in_ = X.shape[1]
         # Return the classifier
         return self
 
@@ -182,6 +185,7 @@ class TemplateTransformer(TransformerMixin, BaseEstimator):
 
         self.n_features_ = X.shape[1]
 
+        self.n_features_in_ = X.shape[1]
         # Return the transformer
         return self
 
